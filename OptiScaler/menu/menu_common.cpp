@@ -4734,10 +4734,12 @@ bool MenuCommon::RenderMenu()
 
                             if (currentFeature != nullptr && !currentFeature->IsFrozen())
                             {
-                                ImGui::Text("Output Scaling is %s, Target Res: %dx%d\nJitter Count: %d",
+                                ImGui::Text("Output Scaling is %s, Target Res: %dx%d (%.2f)\nJitter Count: %d",
                                             config->OutputScalingEnabled.value_or_default() ? "ENABLED" : "DISABLED",
                                             (uint32_t) (currentFeature->DisplayWidth() * _ssRatio),
                                             (uint32_t) (currentFeature->DisplayHeight() * _ssRatio),
+                                            ((float) currentFeature->DisplayWidth() * _ssRatio) /
+                                                (float) currentFeature->RenderWidth(),
                                             currentFeature->JitterCount());
                             }
 
